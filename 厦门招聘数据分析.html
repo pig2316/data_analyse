@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./js/echarts-5.3.3.min.js"></script>
+    <style>
+        #num {
+            width: 1500px;
+            height: 600px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="num"></div>
+    <div id="pie" style="height: 600px; width: 800px"></div>
+    <div id="lang" style="height: 600px; width: 800px"></div>
+
+    <script>
+        var mychart = echarts.init(document.getElementById('num'));
+        mychart.setOption({
+            title: {
+                text: '各行业招聘人数',
+                left: 'center',
+            },
+            legend: {
+                orient: 'vertical',
+                right: '10%',
+                top: '3%',
+                data: ['招聘人数']
+            },
+            tooltip: {
+                type: 'item',
+                formatter: '{a} <br/>{b} : {c}',
+            },
+            xAxis: {
+                type: 'category',
+                data: ['IT互联网', '其他', '建筑', '电子技术', '住宿餐饮', '教育培训', '批发零售', '机械设备重工', '医疗保健', '贸易进出口'],
+            },
+            yAxis: {
+                type: 'value',
+            },
+            series: {
+                type: 'bar',
+                name: '招聘人数',
+                data: [58580, 32786, 19771, 19080, 17066, 12225, 12164, 11906, 9709, 9229],
+                label: {
+                    show: true,
+                    position: 'top'
+                }
+            }
+        });
+
+        var mychart1 = echarts.init(document.getElementById('pie'));
+        mychart1.setOption({
+            title: {
+                left: 'center',
+                text: '各公司类型招聘人数',
+            },
+            series: {
+                name: '人数',
+                type: 'pie',
+                data: [{
+                    value: 4978,
+                    name: '上市公司'
+                }, {
+                    value: 412,
+                    name: '事业单位'
+                }, {
+                    value: 3973,
+                    name: '其他'
+                }, {
+                    value: 4413,
+                    name: '台资/港资'
+                }, {
+                    value: 3217,
+                    name: '合资'
+                }, {
+                    value: 3817,
+                    name: '外资'
+                }, {
+                    value: 75698,
+                    name: '民营/私营'
+                },],
+                label: {
+                    formatter: '{b}: {c} ({d}%)'
+                }
+            }
+        })
+
+        var mychart2 = echarts.init(document.getElementById('lang'));
+        mychart2.setOption({
+            title: {
+                text: '对外语有要求的岗位数',
+                left: 'center',
+            },
+            xAxis: {
+                type: 'category',
+                data: ['英语', '日语', '西班牙语', '德语', '闽南语', '朝鲜语', '法语', '俄语', '阿拉伯语']
+            },
+            yAxis: {
+                type: 'value',
+            },
+            series: {
+                type: 'bar',
+                data: [9292, 317, 49, 49, 47, 30, 27, 24, 4],
+                label: {
+                    show: true,
+                    position: 'top'
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
